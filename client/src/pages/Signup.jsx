@@ -22,6 +22,7 @@ const Signup = () => {
         headers:{
           "Content-Type":"application/json"
         },
+        credentials:'include',
         body:JSON.stringify(userData)
       })
       const data = await res.json()
@@ -42,6 +43,7 @@ const Signup = () => {
     }
 
   }
+
   return (
     <section>
       <div className='max-w-lg w-full mx-auto my-24 px-5'>

@@ -30,7 +30,7 @@ const login = async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
-            expires: 1 * 24 * 60 * 60 * 1000
+            maxAge: 1 * 24 * 60 * 60 * 1000
         })
 
         const data = {
@@ -115,7 +115,7 @@ const logout = async (req, res) => {
             httpOnly:true,
             secure:true,
             sameSite:"none",
-            expires:Date.now()
+            maxAge:Date.now()
         }).json({ message: "Logout successfull.", success: true })
 
     } catch (error) {
