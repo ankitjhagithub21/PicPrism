@@ -15,7 +15,7 @@ const Signup = () => {
               <path
                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
             </svg>
-            <input type="text" className="grow" placeholder="Enter username" required/>
+            <input type="text" className="grow" placeholder="Enter username" required />
           </label>
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -44,6 +44,12 @@ const Signup = () => {
             </svg>
             <input type="password" className="grow" placeholder='Your password' required />
           </label>
+          <select className="select select-bordered w-full ">
+            <option disabled selected>Select Account Type</option>
+            <option>Buyer</option>
+            <option>Seller</option>
+           
+          </select>
           <button className='btn btn-primary'>Sign Up</button>
         </form>
         <p className='mt-5'>Already have an account ? <Link to={"/login"} className='text-primary underline'>Login</Link> </p>
