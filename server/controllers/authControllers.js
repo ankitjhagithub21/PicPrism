@@ -33,14 +33,14 @@ const login = async (req, res) => {
             maxAge: 1 * 24 * 60 * 60 * 1000
         })
 
-        const data = {
+        const loggedInUser = {
             _id: user._id,
             username: user.username,
             email: user.email,
             accountType: user.accountType
         }
 
-        return res.status(200).json({ message: "Login Successfull.", success: true, data })
+        return res.status(200).json({ message: "Login Successfull.", success: true, loggedInUser })
 
 
 
@@ -54,7 +54,7 @@ const signup = async (req, res) => {
 
         const { username, email, password, accountType } = req.body;
 
-        if (!email || !password || !username || !accountType) {
+        if (!email || !password || !username) {
             return res.status(400).json({ error: "All fields are required", success: false })
         }
 
@@ -111,12 +111,14 @@ const signup = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        return res.status(200).cookie('token','',{
+        res.cookie('token','',{
             httpOnly:true,
             secure:true,
             sameSite:"none",
-            maxAge:Date.now()
-        }).json({ message: "Logout successfull.", success: true })
+            maxAge:0
+        })
+
+        return res.status(200).json({ message: "Logout successfull.", success: true })
 
     } catch (error) {
         return res.status(500).json({ error: error.message, success: false })

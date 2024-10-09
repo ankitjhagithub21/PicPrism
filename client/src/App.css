@@ -13,7 +13,7 @@ section{
   justify-content: center;
 }
 .hero{
-  background-image: url(bg.avif);
+  background-image: url(/bg.avif);
   background-size: cover;
   background-position: center;
   margin-top: 12vh;

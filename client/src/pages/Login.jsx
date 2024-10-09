@@ -1,12 +1,15 @@
 import {useNavigate,Link} from 'react-router-dom'
 import {useState} from 'react'
 import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../redux/slices/authSlice'
 
 
 const Login = () => {
   const [isLoading,setIsLoading] = useState(false)
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
+ 
   const handleSubmit = async(e) =>{
     e.preventDefault()
   
@@ -28,7 +31,8 @@ const Login = () => {
 
       if(data.success){
         toast.success(data.message)
-        navigate("/")
+        dispatch(setUser(data.loggedInUser))
+        navigate(`/${data.loggedInUser.accountType}/dashboard`)
       }else{
         toast.error(data.error)
       }

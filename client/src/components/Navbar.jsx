@@ -1,6 +1,28 @@
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { setUser } from '../redux/slices/authSlice'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
+    const { user } = useSelector(state => state.auth)
+    const dispath = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout = async () => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/auth/logout`, {
+                credentials: 'include'
+            })
+            const data = await res.json()
+            if (data.success) {
+                dispath(setUser(null))
+                navigate("/")
+            } else {
+                toast.error(error.message)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <nav className='fixed top-0 w-full'>
             <div className="navbar bg-[#171212] container border-b mx-auto">
@@ -38,7 +60,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to={"/login"} className=" btn btn-primary">Login</Link>
+                    {
+                        user ? <button onClick={handleLogout} className=" btn btn-warning">Logout</button> : <Link to={"/login"} className=" btn btn-primary">Login</Link>
+                    }
                 </div>
             </div>
         </nav>
