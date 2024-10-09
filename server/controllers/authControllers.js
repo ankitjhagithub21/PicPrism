@@ -123,9 +123,26 @@ const logout = async (req, res) => {
     }
 }
 
+const getUser = async (req, res) => {
+    try {
+        
+        const user = await User.findById(req.userId).select("-password")
+
+        if(!user){
+            return res.status(401).json({ error: "Unauthorized.", success: false })
+        }
+
+        return res.status(200).json({ user, success: true })
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message, success: false })
+    }
+}
+
 
 module.exports = {
     login,
     signup,
-    logout
+    logout,
+    getUser
 }
