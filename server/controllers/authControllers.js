@@ -78,7 +78,7 @@ const signup = async (req, res) => {
             return res.status(400).json({ error: "Please enter valid email address.", success: false })
         }
 
-        if (username.length.trim().length < 3) {
+        if (username.trim().length < 3) {
             return res.status(400).json({ error: "Username must be atleast 3 characters long.", success: false })
         }
 
@@ -87,11 +87,13 @@ const signup = async (req, res) => {
             return res.status(400).json({ error: "Please enter strong password.", success: false })
         }
 
+        const hashedPassword = await bcryptjs.hash(password,12)
+
 
         const newUser = new User({
             username,
             email,
-            password,
+            password:hashedPassword,
             accountType
         })
 

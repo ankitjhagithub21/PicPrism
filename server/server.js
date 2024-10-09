@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const connectDb = require('./config/db')
+const authRouter = require('./routes/authRoutes')
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.use("/api/auth",authRouter)
 
 
 app.listen(port, () => {
