@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
     return (
-        <div className='py-32 flex items-center justify-center w-full hero'>
+        <div className='py-32 flex items-center justify-center w-full hero px-5 rounded-xl'>
             <label className="input input-bordered flex items-center gap-2 w-full max-w-xl">
                 <input type="text" className="grow" placeholder="Search here..." />
                 <svg

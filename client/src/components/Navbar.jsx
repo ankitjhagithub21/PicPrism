@@ -28,7 +28,7 @@ const Navbar = () => {
                             <li ><Link to="/contact">Contact</Link></li>
                         </ul>
                     </div>
-                    <Link to={"/"} className="btn btn-ghost text-xl">PicPrism</Link>
+                    <Link to={"/"} className=" text-2xl font-bold">Pic <span className='text-primary'>Prism</span> </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -38,7 +38,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to={"/login"} className="btn">Login</Link>
+                    <Link to={"/login"} className="btn btn-primary">Login</Link>
                 </div>
             </div>
         </nav>
