@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
-        <nav>
-            <div className="navbar bg-base-100">
+        <nav className='fixed top-0 w-full'>
+            <div className="navbar bg-base-100 container border-b mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +28,7 @@ const Navbar = () => {
                             <li ><Link to="/contact">Contact</Link></li>
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost text-xl">PicPrism</Link>
+                    <Link to={"/"} className="btn btn-ghost text-xl">PicPrism</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

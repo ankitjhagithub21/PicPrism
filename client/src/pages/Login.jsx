@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 const Login = () => {
   return (
     <section>
-      <div className='max-w-lg mx-auto my-24 px-5'>
-        <h2 className='mb-5 text-2xl'>Let's connect</h2>
+      <div className='max-w-lg w-full mx-auto my-24 px-5'>
+        <h2 className='mb-5 text-2xl'>Welcome Back !</h2>
         <form className='flex flex-col gap-5'>
 
           <label className="input input-bordered flex items-center gap-2">
