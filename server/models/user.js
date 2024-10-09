@@ -16,6 +16,30 @@ const userSchema = new mongoose.Schema({
         required:true,
        
     },
+    accountType:{
+        type: String,
+        enum : ['buyer','seller'],
+        default: 'buyer'
+    },
+    uploads:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"POST"
+        }
+    ],
+    purchase:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"POST"
+        }
+    ],
+    favourites:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"POST"
+        }
+    ],
+    
     
 })
 
