@@ -9,9 +9,11 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import useFetchUser from './hooks/useFetchUser';
 
 
 const App = () => {
+  useFetchUser()
   return (
     <BrowserRouter>
     <ToastContainer autoClose={1500} />
