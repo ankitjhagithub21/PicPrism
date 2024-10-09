@@ -8,8 +8,6 @@ const Signup = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-
-    if(isLoading) return;
   
     const formData = new FormData(e.target)
     const userData = Object.fromEntries(formData.entries())
@@ -22,7 +20,6 @@ const Signup = () => {
         headers:{
           "Content-Type":"application/json"
         },
-        credentials:'include',
         body:JSON.stringify(userData)
       })
       const data = await res.json()
@@ -93,7 +90,7 @@ const Signup = () => {
             <option value="seller">Seller</option>
            
           </select>
-          <button className={`btn btn-primary ${isLoading && "cursor-not-allowed"} `}>Sign Up</button>
+          <button className={`btn btn-primary `} disabled={isLoading}>Sign Up</button>
         </form>
         <p className='mt-5'>Already have an account ? <Link to={"/login"} className='text-primary underline'>Login</Link> </p>
       </div>

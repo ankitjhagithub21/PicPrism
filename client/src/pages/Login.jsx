@@ -9,8 +9,6 @@ const Login = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-
-    if(isLoading) return;
   
     const formData = new FormData(e.target)
     const userData = Object.fromEntries(formData.entries())
@@ -23,6 +21,7 @@ const Login = () => {
         headers:{
           "Content-Type":"application/json"
         },
+        credentials:'include',
         body:JSON.stringify(userData)
       })
       const data = await res.json()
@@ -47,9 +46,10 @@ const Login = () => {
   return (
     <section>
       <div className='max-w-lg w-full mx-auto my-24 px-5'>
-        <h2 className='mb-5 text-2xl'>Welcome Back !</h2>
+        <h2 className='text-2xl mb-5'>Welcome Back !</h2>
+       
         <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
-
+       
           <label className="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,9 +77,11 @@ const Login = () => {
             </svg>
             <input type="password" name='password' className="grow" placeholder='Your password' required/>
           </label>
-          <button className={`btn btn-primary ${isLoading && 'cursor-not-allowed'}`}>Login</button>
+          <button className={`btn btn-primary`} disabled={isLoading}>Login</button>
         </form>
-        <p className='mt-5'>Don't have an account ? <Link to={"/signup"} className='text-primary underline'>Signup</Link> </p>
+        <p className='my-5'>Don't have an account ? <Link to={"/signup"} className='text-primary underline'>Signup</Link> </p>
+
+        
       </div>
     </section>
   )
