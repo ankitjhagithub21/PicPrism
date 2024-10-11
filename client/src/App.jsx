@@ -12,6 +12,7 @@ import Contact from './pages/Contact'
 import useFetchUser from './hooks/useFetchUser';
 
 
+
 const App = () => {
   useFetchUser()
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+       
       </Routes>
       <Footer/>
     </BrowserRouter>

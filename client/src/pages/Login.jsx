@@ -32,7 +32,7 @@ const Login = () => {
       if(data.success){
        
         dispatch(setUser(data.loggedInUser))
-        navigate(`/${data.loggedInUser.accountType}/dashboard`)
+        navigate(`/${data.loggedInUser.accountType}/profile`)
       }else{
         toast.error(data.error)
       }
