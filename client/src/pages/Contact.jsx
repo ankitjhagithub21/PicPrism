@@ -13,7 +13,7 @@ function Contact() {
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
     setIsLoading(true)
-
+   const toastId = toast.loading("Sending your message...")
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -38,12 +38,13 @@ function Contact() {
       toast.error("Error in sending message")
     } finally {
       setIsLoading(false)
+      toast.dismiss(toastId)
     }
   };
 
   return (
     <section>
-      <div className="w-full max-w-xl">
+      <div className="w-full max-w-xl px-5">
         <h2 className="text-3xl mb-5 ">Contact Us</h2>
         <form onSubmit={onSubmit} className="flex flex-col gap-5">
           <input type="text" placeholder="Your name" name="name" className="input text-lg input-bordered" required autoComplete="off"/>

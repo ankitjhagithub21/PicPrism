@@ -30,7 +30,7 @@ const Login = () => {
       const data = await res.json()
 
       if(data.success){
-        toast.success(data.message)
+       
         dispatch(setUser(data.loggedInUser))
         navigate(`/${data.loggedInUser.accountType}/dashboard`)
       }else{

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { setUser } from '../redux/slices/authSlice'
 import { toast } from 'react-toastify'
 
@@ -7,6 +7,8 @@ const Navbar = () => {
     const { user } = useSelector(state => state.auth)
     const dispath = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
+
     const handleLogout = async () => {
         try {
             const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/auth/logout`, {
@@ -23,7 +25,11 @@ const Navbar = () => {
             console.log(error)
         }
     }
+    if(location.pathname.includes("seller") || location.pathname.includes("buyer") ){
+        return null
+    }
     return (
+
         <nav className='fixed top-0 w-full'>
             <div className="navbar bg-[#171212] container border-b mx-auto">
                 <div className="navbar-start">
