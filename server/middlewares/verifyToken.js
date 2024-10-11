@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-
 const verifyToken = (req,res,next) =>{
     try{
         const token = req.cookies.token
@@ -12,9 +11,10 @@ const verifyToken = (req,res,next) =>{
         if(!decoded){
             return res.status(401).json({error:"Unauthorized.",success:false})
         }
-
-        req.userId = decoded.id;
-
+         
+        req.userId = decoded.id
+        req.accountType = decoded.accountType
+         
         next()
 
     }catch(error){

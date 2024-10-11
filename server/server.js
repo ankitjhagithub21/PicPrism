@@ -4,6 +4,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const connectDb = require('./config/db')
 const authRouter = require('./routes/authRoutes')
+const postRouter = require('./routes/postRoutes')
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/api/auth",authRouter)
+app.use("/api/posts",postRouter)
 
 
 app.listen(port, () => {

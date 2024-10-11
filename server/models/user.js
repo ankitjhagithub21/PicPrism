@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
             ref:"POST"
         }
     ],
-    purchase:[
+    purchased:[
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"POST"

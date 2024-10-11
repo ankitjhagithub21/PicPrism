@@ -67,7 +67,22 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ? <button onClick={handleLogout} className=" btn btn-warning">Logout</button> : <Link to={"/login"} className=" btn btn-primary">Login</Link>
+                        user ?   <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                          <div className="w-10 rounded-full">
+                            <img
+                              alt="user"
+                              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
+                          </div>
+                        </div>
+                        <ul
+                          tabIndex={0}
+                          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                         
+                          <li><Link to={`/${user.accountType}/profile`}>Profile</Link></li>
+                          <li onClick={handleLogout}><button>Logout</button></li>
+                        </ul>
+                      </div> : <Link to={"/login"} className=" btn btn-primary">Login</Link>
                     }
                 </div>
             </div>
